@@ -13,9 +13,9 @@ em{font-style:italic}
 .sc{font-family:var(--script);font-weight:400;font-style:normal;line-height:1}
 
 /* nav */
-nav.top{display:flex;justify-content:center;gap:clamp(1.2rem,5vw,4.5rem);padding:1.7rem 4rem 1.7rem;font:400 .68rem/1 var(--sans);letter-spacing:.3em;flex-wrap:wrap}
+nav.top{display:flex;align-items:center;justify-content:center;gap:clamp(1.2rem,5vw,4.5rem);min-height:6rem;padding:1.2rem 4rem;font:600 .68rem/1 var(--sans);letter-spacing:.3em;flex-wrap:wrap}
 nav.top a:hover{opacity:.6}
-.site-logo{position:absolute;top:.45rem;left:.75rem;z-index:5;width:clamp(64px,8vw,88px)}
+.site-logo{position:absolute;top:calc((6rem - clamp(72px,8vw,88px))/2);left:.75rem;z-index:5;width:clamp(72px,8vw,88px)}
 .site-logo img{width:100%;height:auto}
 .dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--dot);margin-left:.5rem;vertical-align:middle}
 .ig{position:absolute;top:1.3rem;right:1.5rem;width:24px}
@@ -180,7 +180,7 @@ nav.top a{padding:.5rem 0}
 }
 @media(max-width:600px){
   nav.top{gap:.2rem 1.1rem;letter-spacing:.2em;padding:1.2rem 3rem 1rem 5.5rem}
-  .site-logo{top:.45rem;left:.5rem;width:64px}
+  .site-logo{top:1rem;left:.5rem;width:64px}
   .ig{width:22px;top:1.1rem;right:1rem}
   .hero{height:62svh;min-height:300px}
   .claim{padding-top:1.6rem}
