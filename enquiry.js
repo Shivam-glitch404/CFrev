@@ -29,13 +29,25 @@ var WHATSAPP_NUMBER = '917008568764';
       var text = 'New wedding enquiry (Cherish Forever website)\n\n' + rows
         .filter(function (r) { return r[1] && String(r[1]).trim(); })
         .map(function (r) { return r[0] + ': ' + String(r[1]).trim(); }).join('\n');
-      var url = base + (valid ? '?' : '?') + 'text=' + encodeURIComponent(text);
-      var w = window.open(url, '_blank', 'noopener');
-      if (!w) location.href = url;
-
+      var url = base + '?text=' + encodeURIComponent(text);
       var note = form.querySelector('.sent');
       if (!note) { note = document.createElement('p'); note.className = 'sent'; note.setAttribute('role', 'status'); form.appendChild(note); }
-      note.textContent = 'Opening WhatsApp with your details. Please press Send there to finish.';
+      note.replaceChildren();
+
+      var w = window.open('', '_blank');
+      if (w) {
+        w.opener = null;
+        w.location.href = url;
+        note.textContent = 'WhatsApp opened in a new tab. Please press Send there to finish.';
+      } else {
+        note.appendChild(document.createTextNode('Your message is ready. '));
+        var link = document.createElement('a');
+        link.href = url;
+        link.target = '_blank';
+        link.rel = 'noopener';
+        link.textContent = 'Open WhatsApp to send your enquiry.';
+        note.appendChild(link);
+      }
     });
   });
 })();
