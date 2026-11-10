@@ -4,8 +4,30 @@
 
   /* 1. Smooth wheel scrolling (Lenis, optional: the site works without it) */
   if (window.Lenis && !calm) {
-    var lenis = new Lenis({ duration: 1.15, smoothWheel: true });
+    var lenis = new Lenis({ duration: 0.7, smoothWheel: true });
     (function raf(t) { lenis.raf(t); requestAnimationFrame(raf); })(0);
+  }
+
+  var deferredVideos = [].slice.call(document.querySelectorAll('video[data-lazy-video]'));
+  function loadVideo(video) {
+    var source = video.querySelector('source[data-src]');
+    if (!source) return;
+    source.src = source.getAttribute('data-src');
+    source.removeAttribute('data-src');
+    video.load();
+  }
+  if ('IntersectionObserver' in window) {
+    var videoObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          loadVideo(entry.target);
+          videoObserver.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '200px 0px' });
+    deferredVideos.forEach(function (video) { videoObserver.observe(video); });
+  } else {
+    deferredVideos.forEach(loadVideo);
   }
 
   /* 2. Text and images ease in as they enter the screen */
@@ -19,7 +41,7 @@
   });
   els.forEach(function (el) {
     var i = [].filter.call(el.parentNode.children, function (c) { return c.classList.contains('reveal'); }).indexOf(el);
-    el.style.transitionDelay = Math.min(i, 5) * 90 + 'ms';
+    el.style.transitionDelay = Math.min(i, 5) * 45 + 'ms';
   });
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (list) {

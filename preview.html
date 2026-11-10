@@ -147,9 +147,9 @@ nav.top a[aria-current]{border-bottom:1px solid var(--ink);padding-bottom:.5rem}
 .set .ph{position:absolute;inset:0}
 @keyframes slide{to{transform:translateX(-50%)}}
 /* scroll effects */
-.js .reveal{opacity:0;transform:translateY(40px);transition:opacity 1.2s ease,transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.7,.2,1)}
 .js .reveal.in{opacity:1;transform:none}
-.js .reveal.wipe{opacity:1;transform:none;clip-path:inset(0 0 100% 0);transition:clip-path 1.3s cubic-bezier(.7,0,.2,1)}
+.js .reveal.wipe{opacity:1;transform:none;clip-path:inset(0 0 100% 0);transition:clip-path .75s cubic-bezier(.7,0,.2,1)}
 .js .reveal.wipe.in{clip-path:inset(0)}
 .reveal{translate:0 var(--py,0)}
 .lenis.lenis-smooth{scroll-behavior:auto!important}
@@ -233,14 +233,14 @@ nav.top a{padding:.5rem 0}
         <p>At <em>Cherish Forever</em>, we believe your wedding is a once-in-a-lifetime event. We work <em>discreetly and unobtrusively</em>, documenting the day as it unfolds, so you can relive every <em>beautiful and authentic</em> moment for years to come.</p>
         <div class="by"><span class="sc" style="font-size:1.8rem">Farooq Hussain</span><small>(Founder, Cherish Forever)</small></div>
       </div>
-      <div class="ph"><img src="media/photos/DSC_7699.jpg" alt="Wedding celebration photographed by Cherish Forever" loading="lazy" decoding="async"></div>
+      <div class="ph"><img src="media/portfolio/DSC_7699.webp" alt="Wedding celebration photographed by Cherish Forever" loading="lazy" decoding="async"></div>
     </div>
   </section>
 
   <section id="portfolio">
     <div class="pf-head"><span class="sc">Signature Work</span><h2>Portfolio</h2></div>
     <!-- STORY PHOTO: names and title are part of the photo. Use <img src="media/story.jpg" alt="Story title"> -->
-    <div class="pf-card"><div class="ph"><img src="media/photos/AM11.jpg" alt="Wedding celebration photographed by Cherish Forever" loading="lazy" decoding="async"></div></div>
+    <div class="pf-card"><div class="ph"><img src="media/portfolio/AM11.webp" alt="Wedding celebration photographed by Cherish Forever" loading="lazy" decoding="async"></div></div>
     <p class="center" style="padding:2.5rem 0 0"><a class="btn" href="#blogs">BROWSE PORTFOLIO &rsaquo;</a></p>
   </section>
 
@@ -328,7 +328,7 @@ nav.top a{padding:.5rem 0}
 
   /* 1. Smooth wheel scrolling (Lenis, optional: the site works without it) */
   if (window.Lenis && !calm) {
-    var lenis = new Lenis({ duration: 1.15, smoothWheel: true });
+    var lenis = new Lenis({ duration: 0.7, smoothWheel: true });
     (function raf(t) { lenis.raf(t); requestAnimationFrame(raf); })(0);
   }
 
@@ -343,7 +343,7 @@ nav.top a{padding:.5rem 0}
   });
   els.forEach(function (el) {
     var i = [].filter.call(el.parentNode.children, function (c) { return c.classList.contains('reveal'); }).indexOf(el);
-    el.style.transitionDelay = Math.min(i, 5) * 90 + 'ms';
+    el.style.transitionDelay = Math.min(i, 5) * 45 + 'ms';
   });
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (list) {

@@ -1,13 +1,13 @@
 (function () {
   var photos = [
-    'A 03.jpg', 'A 12.jpg', 'A 18.jpg', 'A 22.jpg', 'A.jpg', 'AKL04.jpg',
-    'AM05.jpg', 'am10.jpg', 'AM11.jpg', 'ARN 02.jpg', 'ARN 06.jpg', 'ash 003.jpg',
-    'BAR 01.jpg', 'BAR 03.jpg', 'BAR 06.jpg'
+    'A 03.webp', 'A 12.webp', 'A 18.webp', 'A 22.webp', 'A.webp', 'AKL04.webp',
+    'AM05.webp', 'am10.webp', 'AM11.webp', 'ARN 02.webp', 'ARN 06.webp', 'ash 003.webp',
+    'BAR 01.webp', 'BAR 03.webp', 'BAR 06.webp'
   ];
 
   function makeImage(file, alt) {
     var image = document.createElement('img');
-    image.src = 'media/photos/' + encodeURIComponent(file);
+    image.src = 'media/portfolio/' + encodeURIComponent(file);
     image.alt = alt;
     image.loading = 'lazy';
     image.decoding = 'async';
@@ -28,6 +28,6 @@
   }
 
   document.querySelectorAll('.form .ph').forEach(function (media) {
-    media.replaceChildren(makeImage('SHRE09.jpg', 'Wedding portrait photographed by Cherish Forever'));
+    media.replaceChildren(makeImage('SHRE09.webp', 'Wedding portrait photographed by Cherish Forever'));
   });
 })();

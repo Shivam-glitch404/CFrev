@@ -145,13 +145,13 @@ nav.top a[aria-current]{border-bottom:1px solid var(--ink);padding-bottom:.5rem}
 .set .ph{position:absolute;inset:0}
 @keyframes slide{to{transform:translateX(-50%)}}
 /* scroll effects */
-.js .reveal{opacity:0;transform:translateY(40px);transition:opacity 1.2s ease,transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.7,.2,1)}
 .js .reveal.in{opacity:1;transform:none}
-.js .reveal.wipe{opacity:1;transform:none;clip-path:inset(0 0 100% 0);transition:clip-path 1.3s cubic-bezier(.7,0,.2,1)}
+.js .reveal.wipe{opacity:1;transform:none;clip-path:inset(0 0 100% 0);transition:clip-path .75s cubic-bezier(.7,0,.2,1)}
 .js .reveal.wipe.in{clip-path:inset(0)}
 .reveal{translate:0 var(--py,0)}
 .lenis.lenis-smooth{scroll-behavior:auto!important}
-@media(prefers-reduced-motion:reduce){.js .reveal{transform:translateY(12px);transition-duration:.8s}}
+@media(prefers-reduced-motion:reduce){.js .reveal{transform:translateY(4px);transition-duration:.4s}}
 
 .slot{font:400 .75rem/1.6 var(--sans);letter-spacing:.14em;text-align:center;color:#fff;background:rgba(0,0,0,.4);border:1px dashed rgba(255,255,255,.85);padding:.8rem 1.1rem;max-width:90%}
 .qslot{position:absolute;left:1.5rem;top:1.5rem;z-index:0}
