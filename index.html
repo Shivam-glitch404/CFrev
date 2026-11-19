@@ -139,11 +139,15 @@
       <label>Wedding date *<input name="date" type="date" required></label>
       <label class="full">Location *<input name="location" required></label>
       <label class="full">Details of all the events with dates (pre and post wedding functions if any) *<textarea name="events"></textarea></label>
-      <fieldset class="full"><legend>What type of photography package are you interested in? *</legend>
-        <label><input type="radio" name="package" value="Photography only" required> Photography only</label>
-        <label><input type="radio" name="package" value="Films only"> Films only</label>
-        <label><input type="radio" name="package" value="Photography and films"> Photography and films</label>
-      </fieldset>
+      <label class="full">What type of photography package are you interested in? *
+        <select name="package" required>
+          <option value="" disabled selected>Select a package</option>
+          <option value="Photography Only">Photography Only</option>
+          <option value="Cinematic Package">Cinematic Package</option>
+          <option value="Premium film package">Premium film package</option>
+          <option value="Pre-wedding">Pre-wedding</option>
+        </select>
+      </label>
       <label>What is the guest count? *<input name="guests" type="number" min="1"></label>
       <label>Link to moodboards (if any)<input name="mood"></label>
       <label class="full">How did you hear about us?<input name="source"></label>
