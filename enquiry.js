@@ -24,7 +24,7 @@ var WHATSAPP_NUMBER = '917008568764';
         ['Couple', d.get('couple')], ['Phone', d.get('phone')], ['Email', d.get('email')],
         ['Wedding date', niceDate(d.get('date'))], ['Location', d.get('location')],
         ['Events', d.get('events')], ['Package', d.get('package')], ['Guests', d.get('guests')],
-        ['Moodboard', d.get('mood')], ['Heard about us from', d.get('source')]
+        ['Heard about us from', d.get('source')]
       ];
       var text = 'New wedding enquiry (Cherish Forever website)\n\n' + rows
         .filter(function (r) { return r[1] && String(r[1]).trim(); })

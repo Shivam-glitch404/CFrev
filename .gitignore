@@ -1,0 +1,5 @@
+# TRAE tool artifacts
+.trae-html-share-packages/
+
+# Installers / binaries accidentally placed in media
+media/portfolio/TRAE-Setup-x64.exe

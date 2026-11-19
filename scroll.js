@@ -33,6 +33,7 @@
   /* 2. Text and images ease in as they enter the screen */
   var sel = '.claim,.badges,.intro h2,.intro .row>div>p,.intro .by,.intro .row>.ph,.pf-head>*,.pf-card,' +
     '.tm blockquote,.tm .sc,.tm small,.more,.quote p,.films>.sc,.films>p,.marquee,.form>.ph,form label,' +
+    '.story .overlay,.story .copy,.story .frame,.story.plain blockquote,.story.plain .who,' +
     'form fieldset,form .btn,.ig-cta,.page-title>*,.cards figure,.cinfo p';
   var els = [].slice.call(document.querySelectorAll(sel));
   els.forEach(function (el) {
@@ -69,4 +70,60 @@
   /* fail-safe: anything already on screen is always shown */
   function show() { els.forEach(function (el) { if (el.getBoundingClientRect().top < innerHeight * 0.95) el.classList.add('in'); }); }
   addEventListener('scroll', show, { passive: true }); addEventListener('load', show); setTimeout(show, 1200);
+})();
+
+/* Portfolio slideshow: the big background and the two side photos slide
+   through the portfolio, changing together and never repeating a photo. */
+(function () {
+  var calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var photos = [
+    'A.webp', 'AKL04.webp', 'AM11.webp', 'ARN 02.webp', 'suc 04.webp', 'BAR 01.webp',
+    'DSC_7699.webp', 'SHRE09.webp', 'sway04.webp'
+  ];
+  var groups = [].slice.call(document.querySelectorAll('.pf-collage > .pf-bg, .pf-collage > .pf-float'))
+    .map(function (box) {
+      return { layers: [].slice.call(box.querySelectorAll('.pf-layer')), front: 0 };
+    })
+    .filter(function (g) { return g.layers.length === 2; });
+  if (!groups.length) return;
+
+  function shuffle(a) {
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+
+  var order = shuffle(photos.map(function (f, i) { return i; }));
+  var pos = 0;
+
+  function nextPhoto() {
+    if (pos >= order.length) { shuffle(order); pos = 0; }
+    return 'media/portfolio/' + encodeURIComponent(photos[order[pos++]]);
+  }
+
+  function fade(g) {
+    var incoming = g.layers[1 - g.front];
+    var outgoing = g.layers[g.front];
+    var next = nextPhoto();
+    if (calm) {
+      incoming.src = next;
+      outgoing.src = next;
+    } else {
+      incoming.style.transition = 'none';
+      incoming.style.opacity = '0';
+      incoming.src = next;
+      void incoming.offsetWidth;
+      incoming.style.transition = '';
+      incoming.style.opacity = '1';
+      outgoing.style.opacity = '0';
+    }
+    g.front = 1 - g.front;
+  }
+
+  // Preload every photo so slides never flash empty
+  photos.forEach(function (f) { new Image().src = 'media/portfolio/' + encodeURIComponent(f); });
+
+  setInterval(function () { groups.forEach(fade); }, 5000);
 })();
