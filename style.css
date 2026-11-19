@@ -18,6 +18,9 @@ nav.top a:hover{opacity:.6}
 .dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--dot);margin-left:.5rem;vertical-align:middle}
 .corner-logo{position:absolute;top:calc((6rem - clamp(72px,8vw,88px))/2);left:.75rem;z-index:5;width:clamp(72px,8vw,88px)}
 .corner-logo img,.corner-logo video{width:100%;height:auto;display:block}
+.corner-insta{position:absolute;top:calc((6rem - 36px)/2);right:1.5rem;z-index:5;width:36px;height:36px;display:grid;place-items:center;color:var(--ink);transition:opacity .2s ease}
+.corner-insta svg{width:100%;height:100%;display:block}
+.corner-insta:hover{opacity:.6}
 
 /* media placeholders */
 .ph{background:linear-gradient(160deg,#cfcdc8,#9a9894 70%,#7b7a77);display:grid;place-items:center;color:rgba(255,255,255,.8);font:300 .8rem var(--sans);letter-spacing:.15em;overflow:hidden}
@@ -112,6 +115,8 @@ form .btn{justify-self:center;grid-column:1/-1}
 .ig-cta{text-align:center;padding:2rem 0 5rem}
 footer{border-top:1px solid rgba(28,28,28,.1);padding:2.5rem 4rem 2rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;font:400 .68rem/2.4 var(--sans);letter-spacing:.25em}
 footer .col{display:grid;grid-auto-flow:column;grid-template-rows:repeat(3,auto);justify-content:start;column-gap:3rem}
+footer .footer-logo{display:flex;align-items:center;justify-content:center}
+footer .footer-logo img{max-width:140px;height:auto}
 footer .ct{text-align:right;letter-spacing:.05em;font-weight:300;font-size:.8rem;line-height:1.9}
 .tag{text-align:center;font:300 .65rem var(--sans);letter-spacing:.4em;padding:3rem 0 2rem}
 .up{position:fixed;right:1rem;bottom:1.5rem;writing-mode:vertical-rl;font:300 .6rem var(--sans);letter-spacing:.25em}
@@ -229,6 +234,7 @@ nav.top a{padding:.5rem 0}
   nav.top{gap:.2rem 1.1rem;letter-spacing:.2em;padding:1.2rem 5.5rem 1rem 5.5rem}
   .site-logo{top:1rem;left:.5rem;width:64px}
   .corner-logo{top:1rem;left:.5rem;width:64px}
+  .corner-insta{top:1rem;right:.75rem;width:30px;height:30px}
   .hero{height:62svh;min-height:300px}
   .claim{padding-top:1.6rem}
   .intro{padding:3rem 1.25rem}
