@@ -30,6 +30,21 @@
     deferredVideos.forEach(loadVideo);
   }
 
+  // Autoplay videos in Timeless Films section when mostly visible
+  if ('IntersectionObserver' in window) {
+    var filmVideos = [].slice.call(document.querySelectorAll('.film-block video'));
+    var autoplayObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.play();
+        } else {
+          entry.target.pause();
+        }
+      });
+    }, { rootMargin: '0px', threshold: 0.6 });
+    filmVideos.forEach(function (video) { autoplayObserver.observe(video); });
+  }
+
   /* 2. Text and images ease in as they enter the screen */
   var sel = '.claim,.badges,.intro h2,.intro .row>div>p,.intro .by,.intro .row>.ph,.pf-head>*,.pf-card,' +
     '.tm blockquote,.tm .sc,.tm small,.more,.quote p,.films>.sc,.films>p,.marquee,.form>.ph,form label,' +
