@@ -32,16 +32,19 @@
 
   // Autoplay videos in Timeless Films section when mostly visible
   if ('IntersectionObserver' in window) {
-    var filmVideos = [].slice.call(document.querySelectorAll('.film-block video'));
+    var filmVideos = [].slice.call(document.querySelectorAll('.films-list video, .film-block video'));
     var autoplayObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
+        var v = entry.target;
         if (entry.isIntersecting) {
-          entry.target.play();
+          if (v.readyState < 2) v.load();
+          var p = v.play();
+          if (p && p.catch) p.catch(function () {});
         } else {
-          entry.target.pause();
+          v.pause();
         }
       });
-    }, { rootMargin: '0px', threshold: 0.6 });
+    }, { rootMargin: '100px', threshold: 0.25 });
     filmVideos.forEach(function (video) { autoplayObserver.observe(video); });
   }
 
@@ -64,7 +67,7 @@
       list.forEach(function (e) {
         if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    }, { threshold: 0.05, rootMargin: '0px 0px 15% 0px' });
     els.forEach(function (el) { io.observe(el); });
   } else {
     els.forEach(function (el) { el.classList.add('in'); });
