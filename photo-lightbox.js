@@ -14,7 +14,7 @@
   document.body.appendChild(dialog);
 
   function openPhoto(figure) {
-    var thumbnail = figure.querySelector('.ph img');
+    var thumbnail = figure.querySelector('img');
     if (!thumbnail) return;
 
     fullImage.src = thumbnail.currentSrc || thumbnail.src;
@@ -22,20 +22,22 @@
     dialog.showModal();
   }
 
-  document.querySelectorAll('.cards:not(.films) figure').forEach(function (figure) {
-    if (!figure.querySelector('.ph img')) return;
+  document.querySelectorAll('figure').forEach(function (figure) {
+    if (!figure.querySelector('img')) return;
     figure.tabIndex = 0;
     figure.setAttribute('role', 'button');
     figure.setAttribute('aria-label', 'View full-size photograph');
   });
 
   document.addEventListener('click', function (event) {
-    var figure = event.target.closest('.cards:not(.films) figure');
-    if (figure) openPhoto(figure);
+    var figure = event.target.closest('figure');
+    if (figure) {
+      openPhoto(figure);
+    }
   });
 
   document.addEventListener('keydown', function (event) {
-    var figure = event.target.closest && event.target.closest('.cards:not(.films) figure');
+    var figure = event.target.closest && event.target.closest('figure');
     if (figure && (event.key === 'Enter' || event.key === ' ')) {
       event.preventDefault();
       openPhoto(figure);
