@@ -29,7 +29,7 @@ nav.top a:hover{opacity:.6}
 /* claims row */
 .claim{text-align:center;padding:2.2rem 1rem 1.2rem;font-size:1.05rem;font-weight:300}
 .brand-mark{display:flex;justify-content:center;padding:.5rem 1rem 2.5rem}
-.brand-mark img,.brand-mark video{width:clamp(150px,22vw,230px);height:auto}
+.brand-mark img,.brand-mark video{width:clamp(150px,22vw,230px);height:auto;mix-blend-mode:multiply}
 
 /* intro band */
 .intro{background:var(--band);padding:4.5rem 1.5rem 5rem}
@@ -301,3 +301,56 @@ nav.top a{padding:.5rem 0}
 .wa svg path{fill:var(--ink)}
 .wa:hover{background:var(--ink)}
 .wa:hover svg path{fill:var(--bg)}
+
+/* portfolio page (blogs.html) */
+.pf-hero{position:relative;height:min(88svh,780px);overflow:hidden}
+.pf-hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.02)}
+.pf-hero-t{position:absolute;inset:auto 0 18%;text-align:center;color:#fff;z-index:1;padding:0 1rem}
+.pf-hero-t .sc{font-size:clamp(1.7rem,4vw,3rem);text-shadow:0 2px 18px rgba(0,0,0,.45)}
+.pf-hero-t em{font-style:normal;font-size:.72em;letter-spacing:.05em}
+.pf-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.28),rgba(0,0,0,.12) 45%,rgba(0,0,0,.34))}
+.pf-hero-t{z-index:2}
+.pf-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(1rem,2.4vw,2.2rem);width:min(1240px,92vw);margin:0 auto;padding:4.5rem 0 2rem}
+/* row rhythm like the reference: 3 wide tiles, two rows of 4 narrower tiles, 3 wide tiles */
+.pf-photo.pf-w{grid-column:span 4}
+.pf-photo.pf-n{grid-column:span 3}
+.pf-photo.pf-w .ph{aspect-ratio:4/5}
+.pf-photo{margin:0;text-align:center}
+.pf-photo .ph{aspect-ratio:3/4;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.08),0 8px 22px rgba(0,0,0,.08);cursor:zoom-in;position:relative}
+.pf-photo .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.pf-photo:hover .ph img{transform:scale(1.05)}
+.pf-photo figcaption{font:400 .6rem/1.6 var(--sans);letter-spacing:.28em;text-transform:uppercase;margin-top:.8rem;color:var(--ink)}
+/* cropped tiles: zoom in and anchor to the top so the photo reads as cut off */
+.pf-photo.pf-crop .ph{aspect-ratio:16/10}
+.pf-photo.pf-crop .ph img{transform:scale(1.35);transform-origin:center 30%}
+.pf-photo.pf-crop:hover .ph img{transform:scale(1.42)}
+.pf-quote{position:relative;min-height:88svh;display:grid;place-items:center;overflow:hidden;background:#141210;margin:3rem 0 0}
+.pf-quote>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1);opacity:.55}
+.pf-quote-t{position:relative;z-index:1;color:#fff;text-align:center;padding:5rem 1.5rem;max-width:46rem}
+.pf-quote-t p{font-size:clamp(1.4rem,2.6vw,2rem);line-height:1.5;text-shadow:0 2px 14px rgba(0,0,0,.4)}
+.pf-quote-t .sc{font-size:1.3em}
+.pf-quote-t small{display:block;margin-top:1.2rem;font:300 .72rem/1.9 var(--sans);letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.85)}
+.pf-cta{text-align:center;background:var(--tan);padding:5.5rem 1.5rem 4.5rem;margin-top:0}
+.pf-cta h2{font-weight:400;font:400 clamp(1.5rem,3.4vw,2.4rem)/1.35 var(--sans);letter-spacing:.22em}
+.pf-cta h2 .sc{display:block;font-size:1.35em;letter-spacing:0;text-transform:none;margin-top:.2rem}
+.pf-cta .btn{margin-top:2.2rem}
+@media(max-width:600px){
+  .pf-hero{height:62svh}
+  .pf-grid{grid-template-columns:repeat(2,1fr);gap:1rem;padding:3rem 0 1rem}
+  .pf-photo.pf-w,.pf-photo.pf-n{grid-column:auto}
+  .pf-photo.pf-w .ph{aspect-ratio:3/4}
+  .pf-photo figcaption{letter-spacing:.16em}
+}
+
+/* full-width instagram-style photo strip before the footer */
+.pf-strip{display:flex;position:relative;margin-top:4rem}
+.strip-handle{position:absolute;right:2rem;bottom:100%;margin-bottom:.9rem;font:400 .62rem var(--sans);letter-spacing:.2em;color:var(--ink);text-decoration:none}
+.strip-handle:hover{text-decoration:underline;text-underline-offset:3px}
+.strip-item{flex:1;display:block;height:clamp(220px,24vw,460px)}
+.strip-item img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .3s ease}
+.strip-item:hover img{opacity:.85}
+@media(max-width:600px){
+  .pf-strip{flex-wrap:wrap;margin-top:2.5rem}
+  .strip-item{flex:1 1 50%;height:52vw}
+  .strip-handle{right:1rem}
+}
