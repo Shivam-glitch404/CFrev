@@ -32,7 +32,15 @@
   document.addEventListener('click', function (event) {
     var figure = event.target.closest('figure, .pf-strip .strip-item');
     if (figure) {
-      if (figure.matches('.pf-strip .strip-item')) {
+      if (figure.matches('.films .pf-strip .strip-item')) {
+        var img = figure.querySelector('img');
+        if (img) {
+          var filename = img.src.split('/').pop();
+          window.location.href = 'blogs.html?img=' + encodeURIComponent(filename);
+          return;
+        }
+      }
+      if (figure.matches('.pf-strip .strip-item') && !window.location.pathname.endsWith('films.html')) {
         event.preventDefault();
       }
       openPhoto(figure);
