@@ -351,6 +351,6 @@ nav.top a{padding:.5rem 0}
 .strip-item:hover img{opacity:.85}
 @media(max-width:600px){
   .pf-strip{flex-wrap:wrap;margin-top:2.5rem}
-  .strip-item{flex:1 1 50%;height:52vw}
+  .strip-item{flex:1 1 33.333%;height:33.333vw}
   .strip-handle{right:1rem}
 }

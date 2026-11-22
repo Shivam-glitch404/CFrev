@@ -22,7 +22,7 @@
     dialog.showModal();
   }
 
-  document.querySelectorAll('figure').forEach(function (figure) {
+  document.querySelectorAll('figure, .pf-strip .strip-item').forEach(function (figure) {
     if (!figure.querySelector('img')) return;
     figure.tabIndex = 0;
     figure.setAttribute('role', 'button');
@@ -30,14 +30,17 @@
   });
 
   document.addEventListener('click', function (event) {
-    var figure = event.target.closest('figure');
+    var figure = event.target.closest('figure, .pf-strip .strip-item');
     if (figure) {
+      if (figure.matches('.pf-strip .strip-item')) {
+        event.preventDefault();
+      }
       openPhoto(figure);
     }
   });
 
   document.addEventListener('keydown', function (event) {
-    var figure = event.target.closest && event.target.closest('figure');
+    var figure = event.target.closest && event.target.closest('figure, .pf-strip .strip-item');
     if (figure && (event.key === 'Enter' || event.key === ' ')) {
       event.preventDefault();
       openPhoto(figure);
